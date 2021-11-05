@@ -1,5 +1,7 @@
 {
   "name": "CasaCrianca",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

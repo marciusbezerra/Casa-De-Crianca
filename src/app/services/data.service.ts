@@ -1,83 +1,95 @@
 import { Injectable } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
-export interface Message {
-  fromName: string;
-  subject: string;
-  date: string;
+export interface Video {
+  title: string;
+  url: SafeResourceUrl;
+  isYoutube: boolean;
   id: number;
-  read: boolean;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  public messages: Message[] = [
+  public videos: Video[] = [
     {
-      fromName: 'Matt Chorsey',
-      subject: 'New event: Trip to Vegas',
-      date: '9:32 AM',
-      id: 0,
-      read: false
+      // tslint:disable-next-line: max-line-length
+      // <iframe width="853" height="480" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      title: 'Matt ChorseySons de animais | Aprender sons de animais em português',
+      url: this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/NBbICffDAEQ'),
+      isYoutube: true,
+      id: 1
     },
     {
-      fromName: 'Lauren Ruthford',
-      subject: 'Long time no chat',
-      date: '6:12 AM',
-      id: 1,
-      read: false
+      title: 'Video Aula (Experiment in English)',
+      url: this.sanitizer.bypassSecurityTrustResourceUrl('https://drive.google.com/file/d/1LbW2HiO8QD58l1lYRcnhU73mYPV9G5vd/preview'),
+      isYoutube: true,
+      id: 2
     },
     {
-      fromName: 'Jordan Firth',
-      subject: 'Report Results',
-      date: '4:55 AM',
-      id: 2,
-      read: false
+      title: 'Palavra Cantada | Assim Assado',
+      url: this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/6O_cgx_IXPs'),
+      isYoutube: true,
+      id: 3
     },
     {
-      fromName: 'Bill Thomas',
-      subject: 'The situation',
-      date: 'Yesterday',
-      id: 3,
-      read: false
+      title: 'VÍDEO - MANIFESTO DE AMOR (Yasmin e seus Avós)',
+      url: this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/f47FLeVZfbE'),
+      isYoutube: true,
+      id: 4
     },
     {
-      fromName: 'Joanne Pollan',
-      subject: 'Updated invitation: Swim lessons',
-      date: 'Yesterday',
-      id: 4,
-      read: false
+      title: 'História da Ressurreição - Professora Camila (Inf. 3)',
+      url: this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/0liwftRS8lE'),
+      isYoutube: true,
+      id: 5
     },
     {
-      fromName: 'Andrea Cornerston',
-      subject: 'Last minute ask',
-      date: 'Yesterday',
-      id: 5,
-      read: false
+      title: 'VÍDEO - MANIFESTO DE AMOR (Luiza Lobo e Júlia Lobo com sua avó)',
+      url: this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/zfB7MtOdI28'),
+      isYoutube: true,
+      id: 6
     },
     {
-      fromName: 'Moe Chamont',
-      subject: 'Family Calendar - Version 1',
-      date: 'Last Week',
-      id: 6,
-      read: false
+      title: 'VÍDEO - MANIFESTO DE AMOR (Pedro Arthur e seus avós)',
+      url: this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/3KWQ4LAsRYI'),
+      isYoutube: true,
+      id: 7
     },
     {
-      fromName: 'Kelly Richardson',
-      subject: 'Placeholder Headhots',
-      date: 'Last Week',
-      id: 7,
-      read: false
-    }
+      title: 'A Partir do Pão',
+      url: this.sanitizer.bypassSecurityTrustResourceUrl('https://drive.google.com/file/d/1-BLbRdKnJ4q29Z2tWrxCmJ0L9dG9BW3c/preview'),
+      isYoutube: true,
+      id: 8
+    },
+    {
+      title: 'Happy Easter',
+      url: this.sanitizer.bypassSecurityTrustResourceUrl('https://drive.google.com/file/d/1y4dEuat_s25SzcNac83sYE8MciKSv_Hi/preview'),
+      isYoutube: true,
+      id: 9
+    },
+    {
+      title: 'Massinha de Modelar - Receita, Como fazer',
+      url: this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/pgc5yMjq6Hg'),
+      isYoutube: true,
+      id: 10
+    },
+    {
+      title: 'A Santa Ceia e o Lava-Pés - Marcelino Câmara',
+      url: this.sanitizer.bypassSecurityTrustResourceUrl('https://drive.google.com/file/d/1WFRSyGg_hFEc87GP5gPAg4HrvvdG8akg/preview'),
+      isYoutube: true,
+      id: 11
+    },
   ];
 
-  constructor() { }
+  constructor(private sanitizer: DomSanitizer) { }
 
-  public getMessages(): Message[] {
-    return this.messages;
+  public getVideos(): Video[] {
+    return this.videos;
   }
 
-  public getMessageById(id: number): Message {
-    return this.messages[id];
+  public getVideoById(id: number): Video {
+    return this.videos[id];
   }
 }

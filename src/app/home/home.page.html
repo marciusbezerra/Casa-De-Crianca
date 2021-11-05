@@ -1,25 +1,20 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Inbox
+<ion-header>
+  <ion-toolbar color="secondary">
+    <img src="assets/imgs/banner.png">
+    <ion-title color="light">
+      <h1>Casa de Criança</h1>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
-  
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">
-        Inbox
-      </ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
+<ion-content class="ion-padding" color="primary">
   <ion-list>
-    <app-message *ngFor="let message of getMessages()" [message]="message"></app-message>
+    <app-message *ngFor="let video of getVideos()" [video]="video"></app-message>
   </ion-list>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="secondary">
+    <p>Criado por Marcius C. Bezerra (marciusbezerra@outlook.com)</p>
+  </ion-toolbar>
+</ion-footer>

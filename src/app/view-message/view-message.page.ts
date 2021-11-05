@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DataService, Message } from '../services/data.service';
+import { DataService, Video } from '../services/data.service';
 
 @Component({
   selector: 'app-view-message',
@@ -8,7 +8,7 @@ import { DataService, Message } from '../services/data.service';
   styleUrls: ['./view-message.page.scss'],
 })
 export class ViewMessagePage implements OnInit {
-  public message: Message;
+  public video: Video;
 
   constructor(
     private data: DataService,
@@ -17,12 +17,12 @@ export class ViewMessagePage implements OnInit {
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.message = this.data.getMessageById(parseInt(id, 10));
+    this.video = this.data.getVideoById(parseInt(id, 10));
   }
 
   getBackButtonText() {
     const win = window as any;
     const mode = win && win.Ionic && win.Ionic.mode;
-    return mode === 'ios' ? 'Inbox' : '';
+    return mode === 'ios' ? 'Voltar' : '';
   }
 }
